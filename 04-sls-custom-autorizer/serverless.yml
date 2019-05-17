@@ -1,0 +1,31 @@
+service: sls-authorizer
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+functions:
+  authorizerFunc:
+    handler: handler.authorizerFunc
+
+  helloworld:
+    handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
+          authorizer: authorizerFunc
+          cors:
+            origins:
+              - '*'
+            headers:
+              - Content-Type
+              - Authorization
+  login:
+    handler: handler.login
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true

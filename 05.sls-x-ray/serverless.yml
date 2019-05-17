@@ -1,0 +1,54 @@
+service: wtf-serverless # NOTE: update this with your service name
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: ${env:REGION}
+  tracing: true # enable tracing
+  iamRoleStatements:
+    - Effect: 'Allow' # xray permissions (required)
+      Action:
+        - 'xray:PutTraceSegments'
+        - 'xray:PutTelemetryRecords'
+      Resource:
+        - '*'
+
+    - Effect: 'Allow'
+      Action:
+        - s3:GetObject
+      Resource: arn:aws:s3:::connect-storage-talk/*
+
+    - Effect: 'Allow'
+      Action:
+        - sqs:SendMessage
+        - sqs:CreateQueue
+      Resource: arn:aws:sqs:${env:REGION}:${env:ACCOUNT_ID}:${env:QUEUE_NAME_1}
+    - Effect: 'Allow'
+      Action:
+        - sqs:SendMessage
+        - sqs:CreateQueue
+      Resource: arn:aws:sqs:${env:REGION}:${env:ACCOUNT_ID}:${env:QUEUE_NAME_2}
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-plugin-tracing
+
+functions:
+  s3-event-example:
+    handler: 01s3-trigger.example
+    events:
+      - s3: connect-storage-talk
+
+  sqs-event-example:
+    handler: 02sqs-trigger.example
+    events:
+      - sqs:
+          arn: arn:aws:sqs:${env:REGION}:${env:ACCOUNT_ID}:${env:QUEUE_NAME_1}
+          batchSize: 1
+
+  sqs-sqs-example:
+    handler: 03sqs-trigger.example
+    events:
+      - sqs:
+          arn: arn:aws:sqs:${env:REGION}:${env:ACCOUNT_ID}:${env:QUEUE_NAME_2}
+          batchSize: 1

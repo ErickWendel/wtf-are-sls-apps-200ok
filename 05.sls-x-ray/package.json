@@ -1,0 +1,25 @@
+{
+  "name": "s3-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "s3:start": "sls invoke local -f s3-event-example --path event-s3.json",
+    "s3:logs": "sls logs -f s3-event-example -t",
+    "sqs:start": "sls invoke local -f sqs-event-example --path event-sqs.json",
+    "sqs:logs": "sls logs -f sqs-event-example -t"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.391.0",
+    "aws-xray-sdk": "^2.3.3",
+    "csvtojson": "^2.0.8",
+    "serverless-dotenv-plugin": "^2.0.1"
+  },
+  "devDependencies": {
+    "serverless-plugin-tracing": "^2.0.0"
+  }
+}

@@ -1,0 +1,36 @@
+{
+    "Records": [{
+        "eventVersion": "2.1",
+        "eventSource": "aws:s3",
+        "awsRegion": "us-east-1",
+        "eventTime": "2019-01-07T19:35:26.899Z",
+        "eventName": "ObjectCreated:Put",
+        "userIdentity": {
+            "principalId": "A1QA79PIQV4M8D"
+        },
+        "requestParameters": {
+            "sourceIPAddress": "200.146.204.105"
+        },
+        "responseElements": {
+            "x-amz-request-id": "74FF0F708D772E61",
+            "x-amz-id-2": "M15KX0syq8XlnlJNeuMGMUSC0/zhdatMUO2pXYqkO9ytB5cjx1NyRpiMOjT8pkymZEoxAppRPvI="
+        },
+        "s3": {
+            "s3SchemaVersion": "1.0",
+            "configurationId": "ee36ad26-8e85-4315-9c3d-4537203cd850",
+            "bucket": {
+                "name": "connect-storage-talk",
+                "ownerIdentity": {
+                    "principalId": "A1QA79PIQV4M8D"
+                },
+                "arn": "arn:aws:s3:::connect-storage-talk"
+            },
+            "object": {
+                "key": "item.csv",
+                "size": 30236,
+                "eTag": "2f6a04c7976321532c343247b10bf794",
+                "sequencer": "005C33A9FED7CFFA27"
+            }
+        }
+    }]
+}
