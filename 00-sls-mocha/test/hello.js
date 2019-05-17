@@ -12,8 +12,11 @@ describe('hello', () => {
     done();
   });
 
-  it('implement tests here', async () => {
-    const response = await wrapped.run({ body: { val1: 2, val2: 3 } });
-    expect(response.body).to.eq(5);
+  it('should 1 + 1 = "2"', () => {
+    return wrapped
+      .run({ queryStringParameters: { v1: 1, v2: 1 } })
+      .then(response => {
+        expect(response.body).to.eq('2');
+      });
   });
 });
