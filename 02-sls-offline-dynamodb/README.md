@@ -9,6 +9,7 @@ authorLink: 'https://github.com/adambrgmn'
 authorName: 'Adam Bergman'
 authorAvatar: 'https://avatars1.githubusercontent.com/u/13746650?v=4&s=140'
 -->
+
 # Serverless REST API with DynamoDB and offline support
 
 This example demonstrates how to run a service locally, using the
@@ -49,6 +50,7 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/todos --da
 ```
 
 Example Result:
+
 ```bash
 {"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
 ```
@@ -60,6 +62,7 @@ curl -H "Content-Type:application/json" http://localhost:3000/todos
 ```
 
 Example output:
+
 ```bash
 [{"text":"Deploy my first service","id":"ac90feaa11e6-9ede-afdfa051af86","checked":true,"updatedAt":1479139961304},{"text":"Learn Serverless","id":"206793aa11e6-9ede-afdfa051af86","createdAt":1479139943241,"checked":false,"updatedAt":1479139943241}]%
 ```
@@ -72,6 +75,7 @@ curl -H "Content-Type:application/json" http://localhost:3000/todos/<id>
 ```
 
 Example Result:
+
 ```bash
 {"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
 ```
@@ -84,6 +88,7 @@ curl -X PUT -H "Content-Type:application/json" http://localhost:3000/todos/<id> 
 ```
 
 Example Result:
+
 ```bash
 {"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":true,"updatedAt":1479138570824}%
 ```
@@ -96,3 +101,5 @@ curl -X DELETE -H "Content-Type:application/json" http://localhost:3000/todos/<i
 ```
 
 No output
+
+From: https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb-and-offline
